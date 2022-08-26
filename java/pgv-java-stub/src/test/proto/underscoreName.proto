@@ -1,0 +1,18 @@
+syntax = "proto3";
+package cn.spaceli.pgv.cases.grpc;
+
+option java_multiple_files = true;
+option java_package = "cn.spaceli.pgv.validate";
+import "validate/validate.proto";
+
+message MessageNameWith_Underscore {
+    string v = 1 [(validate.rules).string = {rules: [{min_len: 2, error: {pkg: "cn.spaceli.pgv", class: "TestException", method: "UNKNOWN"}}]}];
+}
+//
+//message AnotherMessageNameWith_Underscore {
+//    string v = 1 [(validate.rules).string.min_len = 2];
+//}
+//
+//message MessageNameWith_Two_Underscore {
+//    string v = 1 [(validate.rules).string.min_len = 2];
+//}

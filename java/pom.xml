@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.spaceli.protoc-gen-validate</groupId>
+    <artifactId>pgv-java</artifactId>
+    <version>0.1.0</version>
+    <modules>
+        <module>pgv-java-stub</module>
+        <module>pgv-artifacts</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <name>PGV-Java Parent</name>
+    <description>Protoc plugin to generate protobuf message validators.</description>
+    <url>https://github.com/curl-li/protoc-gen-validate</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>li</id>
+            <name>Curl-Li</name>
+            <email>licurl@163.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <protoc.version>3.19.4</protoc.version>
+        <google.protobuf.version>3.19.4</google.protobuf.version>
+        <protobuf.maven.plugin.version>0.6.1</protobuf.maven.plugin.version>
+
+        <re2j.version>1.5</re2j.version>
+        <commons.validator.version>1.7</commons.validator.version>
+        <grpc.version>1.42.1</grpc.version>
+        <junit.version>4.12</junit.version>
+        <assertj.version>3.11.1</assertj.version>
+        <proto-google-common-protos.version>2.7.0</proto-google-common-protos.version>
+
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArgument>-Xlint:unchecked</compilerArgument>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <author>false</author>
+                    <breakiterator>true</breakiterator>
+                    <doclint>accessibility,html,reference,syntax</doclint>
+                    <keywords>true</keywords>
+                    <version>false</version>
+                    <source>11</source>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <scm>
+        <url>https://github.com/curl-li/protoc-gen-validate</url>
+        <connection>scm:git:git@github.com:curl-li/protoc-gen-validate.git</connection>
+        <developerConnection>scm:git:git@github.com:curl-li/protoc-gen-validate.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <url>https://nexus.*.com/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+</project>
